@@ -12,6 +12,31 @@ import "@fontsource/roboto/700.css";
 import { store } from "./redux";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+
+import {
+	createTheme,
+	StyledEngineProvider,
+	ThemeProvider,
+} from "@mui/material/styles";
+
+// When using TypeScript 4.x and above
+import type {} from "@mui/x-date-pickers/themeAugmentation";
+
+const theme = createTheme({
+	components: {
+		MuiDatePicker: {
+			styleOverrides: {
+				root: {
+					backgroundColor: "red",
+				},
+			},
+		},
+	},
+});
 
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement
@@ -19,11 +44,17 @@ const root = ReactDOM.createRoot(
 
 root.render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
-		</Provider>
+		{/* <ThemeProvider theme={theme}> */}
+		{/* <StyledEngineProvider injectFirst> */}
+		{/* <Provider store={store}> */}
+		<BrowserRouter>
+			{/* <LocalizationProvider dateAdapter={AdapterMoment}> */}
+			<App />
+			{/* </LocalizationProvider> */}
+		</BrowserRouter>
+		{/* </StyledEngineProvider> */}
+		{/* </ThemeProvider> */}
+		{/* </Provider> */}
 	</React.StrictMode>
 );
 
